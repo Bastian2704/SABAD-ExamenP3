@@ -11,11 +11,17 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
-                            <Label Text="{Binding Name}" FontSize="18" />
-                            <Label Text="{Binding Capital}" FontSize="14" />
-                            <Label Text="{Binding Region}" FontSize="14" />
-                            <Label Text="{Binding Subregion}" FontSize="14" />
+                        <StackLayout Padding="10">
+                            <!-- Horizontal layout for Name and Capital -->
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{Binding Name.Common}" FontSize="13" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Capital[0]}" FontSize="12" HorizontalOptions="End"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{Binding Region}" FontSize="13" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Subregion}" FontSize="12" HorizontalOptions="End"/>
+                            </StackLayout>
+
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

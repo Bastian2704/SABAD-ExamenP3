@@ -22,24 +22,37 @@ namespace SAbadEvaluacion3P
         {
             try
             {
-                // URL de la API Rest Countries (ejemplo de la API pública)
-                string url = "https://restcountries.com/v3.1/all";
-
-                // Realizar la solicitud HTTP GET
+                var url = "https://restcountries.com/v3.1/all"; // URL de la API
                 var response = await _httpClient.GetStringAsync(url);
 
-                // Deserializar el JSON en una lista de objetos Country
+                // Verifica que la respuesta no esté vacía
+                if (string.IsNullOrWhiteSpace(response))
+                {
+                    throw new Exception("Respuesta vacía de la API.");
+                }
+
+                // Deserializa la respuesta JSON a una lista de países
                 var countries = JsonConvert.DeserializeObject<List<SACountry>>(response);
 
                 return countries;
             }
+            catch (HttpRequestException httpEx)
+            {
+                Console.WriteLine($"Error de solicitud HTTP: {httpEx.Message}");
+                if (httpEx.InnerException != null)
+                {
+                    Console.WriteLine($"Detalles internos: {httpEx.InnerException.Message}");
+                }
+                return new List<SACountry>(); // Devuelve una lista vacía si hay un error
+            }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al obtener países: {ex.Message}");
-                return new List<SACountry>();
+                return new List<SACountry>(); // Devuelve una lista vacía si hay un error
             }
-        }
+        
 
 
+    }
     }
 }
