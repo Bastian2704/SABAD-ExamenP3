@@ -7,7 +7,7 @@
         <Button Text="Load Countries"
                 Command="{Binding LoadCountriesCommand}" />
 
-        <ListView ItemsSource="{Binding Countries}">
+        <ListView ItemsSource="{Binding Countries}" SelectedItem="{Binding SelectedCountry}" ItemSelected="OnItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

@@ -11,5 +11,7 @@
         Title="Home"
         ContentTemplate="{DataTemplate local:SACountryView}"
         Route="MainPage" />
+    <ShellContent Route="countrydetails" ContentTemplate="{DataTemplate local:SADetalleCountry}" />
+
 
 </Shell>

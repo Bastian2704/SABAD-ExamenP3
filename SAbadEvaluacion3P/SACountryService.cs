@@ -54,5 +54,25 @@ namespace SAbadEvaluacion3P
 
 
     }
+
+        public async Task<SACountry> GetCountryByNameAsync(string countryName)
+        {
+            try
+            {
+                // Hacemos la solicitud GET a la API de RestCountries
+                var response = await _httpClient.GetStringAsync($"https://restcountries.com/v3.1/name/{countryName}");
+
+                // Deserializamos la respuesta JSON
+                var countries = JsonConvert.DeserializeObject<List<SACountry>>(response);
+
+                // Retornamos el primer país de la lista
+                return countries != null && countries.Count > 0 ? countries[0] : null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al obtener país: {ex.Message}");
+                return null;
+            }
+        }
     }
 }
