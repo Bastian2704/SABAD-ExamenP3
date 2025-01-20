@@ -12,7 +12,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                            <!-- Horizontal layout for Name and Capital -->
+                           
                             <StackLayout Orientation="Horizontal" Spacing="10">
                                 <Label Text="{Binding Name.Common}" FontSize="13" HorizontalOptions="StartAndExpand"/>
                                 <Label Text="{Binding Capital[0]}" FontSize="12" HorizontalOptions="End"/>
