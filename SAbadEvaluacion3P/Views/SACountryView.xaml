@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SAbadEvaluacion3P.Views.SACountryView"
+             Title="SACountryView">
+    <StackLayout Padding="10">
+        <Button Text="Load Countries"
+                Command="{Binding LoadCountriesCommand}" />
+
+        <ListView ItemsSource="{Binding Countries}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Name}" FontSize="18" />
+                            <Label Text="{Binding Capital}" FontSize="14" />
+                            <Label Text="{Binding Region}" FontSize="14" />
+                            <Label Text="{Binding Subregion}" FontSize="14" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
